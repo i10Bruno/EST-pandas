@@ -44,3 +44,27 @@ sns.histplot(df_publico['Tutoring_Sessions'],color='blue',bins=10,label='blue wi
 sns.histplot(df_private['Tutoring_Sessions'],color='red',bins=10,label='red wine')
 
 # %%
+print(df['Teacher_Quality'].value_counts())
+print(df['Exam_Score'].value_counts())
+# %%
+colunas_lista = list(df.columns)
+# %%
+colunas_lista
+variaveis_quantitativas = df.select_dtypes(include=['number']).columns.tolist()
+# %%
+pearson_corr = df[variaveis_quantitativas].corr(method='pearson')
+spearman_corr = df[variaveis_quantitativas].corr(method='spearman')
+
+print("Pearson Correlation:\n", pearson_corr)
+
+
+# %%
+sns.pairplot(df[variaveis_quantitativas])
+plt.show()
+# %%
+sns.lmplot(x='Hours_Studied', y='Exam_Score', data=df)
+
+#sns.lmplot(x='residual_sugar', y='total_sulfur_dioxide', data=vinho)
+plt.show()
+# %%
+df
